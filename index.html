@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var int = 1.23;
+    var str = 'Hello , World';
+    var arr = ["Banana", "Orange", "Apple", "Mango"];
+    var obj = {
+        name : 'volodimir',
+        getInfo : function(){
+            return name;
+        }
+    };
+
+    function forNumb(obj,type){
+        var res;
+        res = obj.toString();
+        console.log('Number : '+ obj + ', type : ' + type);
+        console.log('Number method: toString');
+        console.log('result: ' + res + ' ' +  typeof res);
+
+        console.log('---------------------------------------------------------------');
+
+        res = obj.toExponential(4);
+        console.log('Number : '+ obj + ', type : ' + type);
+        console.log('Number method: toExponential,Argument: "4" ');
+        console.log('result: ' + res);
+
+        console.log('---------------------------------------------------------------');
+
+        res = obj.toFixed(0);
+        console.log('Number : '+ obj + ', type : ' + type);
+        console.log('Number method: toFixed,Argument: "0" ');
+        console.log('result: ' + res);
+
+        console.log('---------------------------------------------------------------');
+
+        res = obj.toPrecision(2);
+        console.log('Number : '+ obj + ', type : ' + type);
+        console.log('Number method: toPrecision, Argument: "2" ');
+        console.log('result: ' + res);
+
+        console.log('---------------------------------------------------------------');
+
+        res = Number(false);
+        console.log('Number : '+ obj + ', type : ' + type);
+        console.log('Number method: Number, Argument: "false" ');
+        console.log('result: ' + res);
+
+        console.log('---------------------------------------------------------------');
+
+        res = parseInt("10 years");
+        console.log('Number : '+ obj + ', type : ' + type);
+        console.log('Number method: parseInt, Argument: "10 years" ');
+        console.log('result: ' + res);
+
+        console.log('---------------------------------------------------------------');
+
+        res = parseFloat(obj);
+        console.log('Number : '+ obj + ', type : ' + type);
+        console.log('Number method: parseFloat, Argument: ' + obj);
+        console.log('result: ' + res);
+
+        console.log('---------------------------------------------------------------');
+
+        res = obj.valueOf();
+        console.log('Number : '+ obj + ', type : ' + type);
+        console.log('Number method: valueOf');
+        console.log('result: ' + res);
+
+        console.log('---------------------------------------------------------------');
+    }
+
+    function forStr(obj,type){
+        var res;
+        res = obj.indexOf('World');
+        console.log('String: '+ obj + ', type : ' + type);
+        console.log('String method: indexOf,Argument: "World" ');
+        console.log('result: ' + res);
+
+        console.log('---------------------------------------------------------------');
+
+        res = obj.lastIndexOf('World');
+        console.log('String : '+ obj + ', type : ' + type);
+        console.log('String method: lastIndexOf, Argument: "World" ');
+        console.log('result: ' + res);
+
+        console.log('---------------------------------------------------------------');
+
+        res = obj.search('Hello');
+        console.log('String : '+ obj + ', type : ' + type);
+        console.log('String method: search, Argument: "Hello" ');
+        console.log('result: ' + res);
+
+        console.log('---------------------------------------------------------------');
+
+        res = obj.slice(3,9);
+        console.log('String : '+ obj + ', type : ' + type);
+        console.log('String method: slice, Argument: "3,9"');
+        console.log('result: ' + res);
+
+        console.log('---------------------------------------------------------------');
+
+        res = obj.substring(1,7);
+        console.log('String : '+ obj + ', type : ' + type);
+        console.log('String method: substring, Argument: "1,7" ');
+        console.log('result: ' + res);
+
+        console.log('---------------------------------------------------------------');
+
+        res = obj.substr(7,6);
+        console.log('String : '+ obj + ', type : ' + type);
+        console.log('String method: substr, Argument: "7,6" ');
+        console.log('result: ' + res);
+
+        console.log('---------------------------------------------------------------');
+
+        res = obj.replace('World','Hizenberg');
+        console.log('String : '+ obj + ', type : ' + type);
+        console.log('String method: replace, Argument "World","Hizenberg"');
+        console.log('result: ' + res);
+
+        console.log('---------------------------------------------------------------');
+
+        res = obj.toUpperCase();
+        console.log('String : '+ obj + ', type : ' + type);
+        console.log('String method: toUpperCase');
+        console.log('result: ' + res);
+
+        console.log('---------------------------------------------------------------');
+
+        res = obj.toLowerCase();
+        console.log('String : '+ obj + ', type : ' + type);
+        console.log('String method: toLowerCase');
+        console.log('result: ' + res);
+
+        console.log('---------------------------------------------------------------');
+
+        res = obj.concat(obj,'Test Text');
+        console.log('String : '+ obj + ', type : ' + type);
+        console.log('String method: concat, Argument: "Test Text"');
+        console.log('result: ' + res);
+
+        console.log('---------------------------------------------------------------');
+
+        res = obj.charCodeAt(0);
+        console.log('String : '+ obj + ', type : ' + type);
+        console.log('String method: charCodeAt, Argument: "0"');
+        console.log('result: ' + res);
+
+        console.log('---------------------------------------------------------------');
+
+        res = obj.split(",");
+        console.log('String : '+ obj + ', type : ' + type);
+        console.log('String method: split, Argument: ","');
+        console.log('result: ' + res[1]);
+
+        console.log('---------------------------------------------------------------');
+    }
+
+    function forArr(obj,type){
+
+
+        if(obj != null){
+            if(obj.length){
+                var res,clone1,clone2,clone3,clone4,clone5,clone6,clone7,clone8,clone9,clone10,clone11;
+
+                clone1 = obj.slice(0);
+                res = clone1.pop();
+                console.log('Array: '+ obj + ', type : ' + type);
+                console.log('Array method: pop');
+                console.log('result: ' + res);
+
+                console.log('---------------------------------------------------------------');
+
+                clone2 = obj.slice(0);
+                console.log('Array: '+ clone2 + ', type : ' + type);
+                res = clone2.push('Kiwi');
+                console.log('Array method: push, Argument : "Kiwi"');
+                console.log('result: ' + res);
+
+                console.log('---------------------------------------------------------------');
+
+                clone3 =  obj.slice(0);
+                console.log('Array: '+ clone3 + ', type : ' + type);
+                res = clone3.shift();
+                console.log('Array method: shift');
+                console.log('result: ' + res);
+
+                console.log('---------------------------------------------------------------');
+
+                clone4 =  obj.slice(0);
+                console.log('Array: '+ clone4 + ', type : ' + type);
+                res = clone4.unshift("Lemon");
+                console.log('Array method: unshift, Argument : "Lemon"');
+                console.log('result: ' + res);
+
+                console.log('---------------------------------------------------------------');
+
+                clone5 = obj.slice(0);
+                console.log('Array: '+ clone5 + ', type : ' + type);
+                res = delete clone5[0];
+                console.log('Array method: delete, Argument : ' + clone5[1]);
+                console.log('result: ' + res);
+
+                console.log('---------------------------------------------------------------');
+
+                clone6 = obj.slice(0);
+                console.log('Array: '+ clone6 + ', type : ' + type);
+                res = clone6.splice(1, 0, "Lemon", "Kiwi");
+                console.log('Array method: splice, Argument : 2, 0, "Lemon", "Kiwi"');
+                console.log('result: ' + res);
+
+                console.log('---------------------------------------------------------------');
+
+                clone7 = obj.slice(0);
+                console.log('Array: '+ clone7 + ', type : ' + type);
+                res = clone7.sort();
+                console.log('Array method: sort');
+                console.log('result: ' + res);
+
+                console.log('---------------------------------------------------------------');
+
+                clone8 = obj.slice(0);
+                console.log('Array: '+ clone8 + ', type : ' + type);
+                res = clone8.reverse();
+                console.log('Array method: reverse');
+                console.log('result: ' + res);
+
+                console.log('---------------------------------------------------------------');
+
+                clone9 = obj.slice(0);
+                console.log('Array: '+ clone9 + ', type : ' + type);
+                res = clone9.concat([40, 100, 1, 5, 25, 10]);
+                console.log('Array method: concat, Argument : "[40, 100, 1, 5, 25, 10]"');
+                console.log('result: ' + res);
+
+                console.log('---------------------------------------------------------------');
+
+                clone10 = obj.slice(0);
+                console.log('Array: '+ clone10 + ', type : ' + type);
+                res = clone10.valueOf();
+                console.log('Array method: valueOf');
+                console.log('result: ' + res);
+
+                console.log('---------------------------------------------------------------');
+
+                clone11 = obj.slice(0);
+                console.log('Array: '+ clone11 + ', type : ' + type);
+                res = clone11.toString();
+                console.log('Array method: toString');
+                console.log('result: ' + res);
+
+                console.log('---------------------------------------------------------------');
+            }else {
+                console.log('функция не работает с данным типом параметров');
+            }
+        }else {
+            console.log('функция не работает с данным типом параметров');
+        }
+    }
+
+    function jsCheckInput(input) {
+        var type = typeof input;
+        switch (type) {
+            case 'number':
+                forNumb(input,type);
+                break;
+            case 'string':
+                forStr(input,type);
+                break;
+            case 'object':
+                forArr(input,type);
+                break;
+            default:
+                console.log('функция не работает с данным типом параметров');
+        }
+    }
+
+    jsCheckInput(obj);
+</script>
+</body>
+</html>
