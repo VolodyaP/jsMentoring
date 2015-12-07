@@ -7,19 +7,39 @@ function printResult(type,object,methodName,result,argument){
     console.log('---------------------------------------------------------------');
 }
 
+function getRandomValue(arr){
+    return arr[Math.floor(Math.random() * arr.length)];
+}
+
+function getRandMathArray(){
+    var arr = [];
+    for (var i=0, t=10; i<t; i++) {
+        arr.push(Math.round(Math.random() * t))
+    }
+    return arr;
+}
+
+function getRandomStrNumb(obj){
+    var length = obj.length;
+    arg1 = (Math.floor((Math.random() * length) + 1));
+    arg2 = (Math.floor((Math.random() * length) + 1));
+    return [arg1,arg2]
+}
+
 function forNumb(obj,type){
-    var res;
+    var res,rendNumber;
+    rendNumber = getRandomValue([1,3,5,7,9,11,7]);
     res = obj.toString();
     printResult(type,obj,'toString',res);
 
-    res = obj.toExponential(4);
-    printResult(type,obj,'toExponential',res,4);
+    res = obj.toExponential(rendNumber);
+    printResult(type,obj,'toExponential',res,rendNumber);
 
-    res = obj.toFixed(0);
-    printResult(type,obj,'toFixed',res,'0');
+    res = obj.toFixed(rendNumber);
+    printResult(type,obj,'toFixed',res,rendNumber);
 
-    res = obj.toPrecision(2);
-    printResult(type,obj,'toPrecision',res,2);
+    res = obj.toPrecision(rendNumber);
+    printResult(type,obj,'toPrecision',res,rendNumber);
 
     res = Number(obj);
     printResult(type,obj,'Number',res,obj);
@@ -35,27 +55,49 @@ function forNumb(obj,type){
 }
 
 function forStr(obj,type){
-    var res;
-    res = obj.indexOf('World');
-    printResult(type,obj,'indexOf',res,'World');
+    var res,rand,args, randString;
 
-    res = obj.lastIndexOf('World');
-    printResult(type,obj,'lastIndexOf',res,'World');
+    args = getRandomStrNumb(obj);
 
-    res = obj.search('Hello');
-    printResult(type,obj,'search',res,'Hello');
+    res = function(){
+        var arr = obj.split(" ");
+        rand = getRandomValue(arr);
+        return obj.indexOf(rand);
+    };
+    printResult(type,obj,'indexOf',res(),rand);
 
-    res = obj.slice(3,9);
-    printResult(type,obj,'slice',res,'3,9');
+    res = function(){
+        var arr = obj.split(" ");
+        rand = getRandomValue(arr);
+        return obj.lastIndexOf(rand);
+    };
+    printResult(type,obj,'lastIndexOf',res(),rand);
 
-    res = obj.substring(1,7);
-    printResult(type,obj,'substring',res,'1,7');
+    res = function(){
+        var arr = obj.split(" ");
+        rand = getRandomValue(arr);
+        return obj.search(rand);
+    };
+    printResult(type,obj,'search',res(),rand);
 
-    res = obj.substr(7,6);
-    printResult(type,obj,'substr',res,'7,6');
+    res =  obj.slice(args[0],args[1]);
+    printResult(type,obj,'slice',res,args[0] + ',' +args[1]);
 
-    res = obj.replace('World','Hizenberg');
-    printResult(type,obj,'replace',res,'World,Hizenberg');
+
+
+    res = obj.substring(args[0],args[1]);
+    printResult(type,obj,'substring',res,args[0] + ' , ' + args[1]);
+
+    res = obj.substr(args[0],args[1]);
+    printResult(type,obj,'substr',res, args[0] + ' , ' + args[1]);
+
+    res = function() {
+        var arr = obj.split(" ");
+        rand = getRandomValue(arr);
+        randString = getRandomValue(['test','array','text']);
+        return obj.replace(rand , randString );
+    };
+    printResult(type,obj,'replace',res(),rand + ' , ' + randString);
 
     res = obj.toUpperCase();
     printResult(type,obj,'replace',res);
@@ -63,48 +105,65 @@ function forStr(obj,type){
     res = obj.toLowerCase();
     printResult(type,obj,'toLowerCase',res);
 
-    res = obj.concat(obj,'Test Text');
-    printResult(type,obj,'concat',res,obj+' Test Text');
+    res = function(){
+        randString = getRandomValue(['test','array','text']);
+        return obj.concat(obj,randString);
+    };
+    printResult(type,obj,'concat',res(),randString);
 
-    res = obj.charCodeAt(0);
-    printResult(type,obj,'charCodeAt',res,'0');
+    res = obj.charAt(args[0]);
+    printResult(type,obj,'charAt',res,args[0]);
 
-    res = obj.split(",");
-    printResult(type,obj,'split',res,',');
+    res = obj.charCodeAt(args[0]);
+    printResult(type,obj,'charCodeAt',res,args[0]);
+
+    res = function(){
+        rand = getRandomValue([" ",",",".","-","+"]);
+        return obj.split(rand);
+    };
+    printResult(type,obj,'split',res(),rand);
 }
 
 function forArr(obj,type){
     if(obj != null){
         if(obj.length){
-            var res,clone1,clone2,clone3,clone4,clone5,clone6,clone7,clone8,clone9,clone10,clone11,clone12;
+            var res,clone1,clone2,clone3,clone4,clone5,clone6,clone7,clone8,clone9,clone10,clone11,clone12,rand;
 
             clone12 = obj.slice(0);
-            res = clone12.join(' - ');
-            printResult(type,obj,'join',res,' - ');
+            rand = getRandomValue(['/','+','-','&']);
+            res = clone12.join(rand);
+            printResult(type,obj,'join',res,rand);
 
             clone1 = obj.slice(0);
             res = clone1.pop();
             printResult(type,obj,'pop',res);
 
             clone2 = obj.slice(0);
-            res = clone2.push('Kiwi');
-            printResult(type,obj,'push',res,'Kiwi');
+            rand = getRandomValue(['a1','a2','a3']);
+            res = clone2.push(rand);
+            printResult(type,obj,'push',res,rand);
 
             clone3 =  obj.slice(0);
             res = clone3.shift();
             printResult(type,obj,'shift',res);
 
             clone4 =  obj.slice(0);
-            res = clone4.unshift("Lemon");
-            printResult(type,obj,'unshift',res,"Lemon");
+            rand = getRandomValue([2,'test','a1']);
+            res = clone4.unshift(rand);
+            printResult(type,obj,'unshift',res,rand);
 
             clone5 = obj.slice(0);
-            res = delete clone5[0];
-            printResult(type,obj,'delete',res,"clone5[0]");
-            
+            rand = getRandomValue(clone5);
+            res = delete clone5[rand];
+            printResult(type,obj,'delete',res,rand);
+
             clone6 = obj.slice(0);
-            res = clone6.splice(1, 0, "Lemon", "Kiwi");
-            printResult(type,obj,'splice',res,'1, 0, "Lemon", "Kiwi"');
+            var arg1 = getRandomValue([1,2,3]);
+            var arg2 = getRandomValue([0,1,2]);
+            var arg3 = getRandomValue(["a1", "a2","a4","a5"]);
+            var arg4 = getRandomValue(["a6", "a7","a8","a9"]);
+            res = clone6.splice(arg1, arg2, arg3, arg4);
+            printResult(type,obj,'splice',res,arg1 + ' ' + arg2 + ' ' + arg3 + ' ' + arg4);
 
             clone7 = obj.slice(0);
             res = clone7.sort();
@@ -115,8 +174,9 @@ function forArr(obj,type){
             printResult(type,obj,'reverse',res);
 
             clone9 = obj.slice(0);
-            res = clone9.concat([40, 100, 1, 5, 25, 10]);
-            printResult(type,obj,'concat',res,'[40, 100, 1, 5, 25, 10]');
+            var randomArr = getRandMathArray();
+            res = clone9.concat(randomArr);
+            printResult(type,obj,'concat',res,randomArr);
 
             clone10 = obj.slice(0);
             res = clone10.valueOf();
