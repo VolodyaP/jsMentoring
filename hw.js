@@ -45,7 +45,3 @@
         }
         return result;
     }
-
-
-
-
