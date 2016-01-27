@@ -1,5 +1,9 @@
+/*
+ * Decorator design pattern
+ */
+
 function Sale(price) {
-    this.price = price || 100;
+    this.price = price;
 }
 Sale.prototype.getPrice = function () {
     return this.price;
@@ -7,33 +11,22 @@ Sale.prototype.getPrice = function () {
 
 Sale.decorators = {};
 
-Sale.decorators.fedtax = {
+Sale.decorators.newPost = {
     getPrice: function () {
         var price = this.uber.getPrice();
-        price += price * 5 / 100;
-        return price;
+        var newPostPrice = 30;
+        return price + newPostPrice;
     }
 };
 
-Sale.decorators.quebec = {
+Sale.decorators.courier = {
     getPrice: function () {
         var price = this.uber.getPrice();
-        price += price * 7.5 / 100;
-        return price;
+        var courierPrice = 100;
+        return price + courierPrice;
     }
 };
 
-Sale.decorators.money = {
-    getPrice: function () {
-        return "$" + this.uber.getPrice().toFixed(2);
-    }
-};
-
-Sale.decorators.cdn = {
-    getPrice: function () {
-        return "CDN$ " + this.uber.getPrice().toFixed(2);
-    }
-};
 
 Sale.prototype.decorate = function (decorator) {
     var F = function () {},
@@ -51,3 +44,7 @@ Sale.prototype.decorate = function (decorator) {
         }
         return newobj;
     };
+
+var sale = new Sale(100);
+sale = sale.decorate('courier');
+console.log(sale.getPrice());
